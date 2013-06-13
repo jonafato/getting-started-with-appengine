@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="twelve columns">Edit account</h1>
+<form method="POST" class="three columns end">
+    <label for="first_name">First Name</label>
+    <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}">
+    <label for="last_name">Last Name</label>
+    <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}">
+    <label for="hobby">Add Hobby</label>
+    <input type="text" id="hobby" name="hobby">
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

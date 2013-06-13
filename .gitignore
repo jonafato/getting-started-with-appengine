@@ -1,0 +1,4 @@
+.DS*
+*.pyc
+dev_settings.py
+*.swp

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="twelve columns">My account</h1>
+<div class="six columns">
+    <ul>
+        <li>You are {{ user.display_name() }}</li>
+        <li>You got here on {{ user.created.date() }} at {{ user.created.replace(microsecond=0).time() }}</li>
+        <li>You are {{ user.age }} years old</li>
+        <li>Your hobies are:
+            <ul>
+                {% for hobby in user.hobbies %}
+                    <li>{{ hobby }}</li>
+                {% else %}
+                    <li>lacking...</li>
+                {% endfor %}
+            </ul>
+        </li>
+        <p><a href="/userinfo/edit/">Edit</a></p>
+    </ul>
+</div>
+<div class="six colums">
+    {% if user.cat_photo %}
+        <p>Your cat photo is:</p>
+        <img src="/download-cat-photo/">
+    {% else %}
+        <p>You don't have a cat photo yet</p>
+    {% endif %}
+    <form method="POST" action="{{ cat_photo_url }}" enctype="multipart/form-data">
+        <input type="file" name="photo">
+        <button type="submit">Change photo</button>
+    </form>
+</div>
+{% endblock %}
